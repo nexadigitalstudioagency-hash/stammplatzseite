@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stammplatz – Digitales für Restaurants</title>
+  <meta name="description" content="Speisekarten, PDF- und QR-Menüs, animierte TV-Menüs, Promo-Videos, Instagram &amp; TikTok, Websites und digitale Stempelkarten für Restaurants, Cafés und Imbisse. Schon über 50 Restaurants betreut.">
+  <meta name="theme-color" content="#F4ECDF">
+  <meta property="og:title" content="Stammplatz – Gäste, die wiederkommen.">
+  <meta property="og:description" content="Speisekarten, QR-Menüs, TV-Menüboards, Promo-Videos, Instagram &amp; TikTok, Websites und digitale Stempelkarten für Restaurants.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- Sicherheit: Browser lädt nur Dateien von dieser Seite (+ Formular an FormSubmit) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src https://formsubmit.co; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <!-- Schriften liegen auf der eigenen Seite (schneller, keine Verbindung zu Google) -->
+  <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body id="top">
+
+<!-- =========================================================
+     GRAFIKEN (Essen, Icons) – einmal definiert, mehrfach benutzt
+     ========================================================= -->
+<svg width="0" height="0" class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- Pizza -->
+    <radialGradient id="pz-crust"><stop offset=".78" stop-color="#F6D29A"/><stop offset=".88" stop-color="#E6A85E"/><stop offset=".96" stop-color="#C47E38"/><stop offset="1" stop-color="#9A5A24"/></radialGradient>
+    <radialGradient id="pz-sauce"><stop offset="0" stop-color="#EA5B30"/><stop offset=".8" stop-color="#CC3E1E"/><stop offset="1" stop-color="#A93018"/></radialGradient>
+    <radialGradient id="pz-cheese" cx=".4" cy=".35"><stop offset="0" stop-color="#FFF7DC"/><stop offset="1" stop-color="#F3D284"/></radialGradient>
+    <radialGradient id="pz-salami" cx=".38" cy=".34"><stop offset="0" stop-color="#D9533A"/><stop offset=".65" stop-color="#AD2C1B"/><stop offset="1" stop-color="#701A0E"/></radialGradient>
+    <linearGradient id="pz-basil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6DB352"/><stop offset="1" stop-color="#2F6B27"/></linearGradient>
+    <filter id="melt" x="-15%" y="-15%" width="130%" height="130%"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="7"/><feDisplacementMap in="SourceGraphic" scale="14" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="wave" x="-5%" y="-20%" width="110%" height="140%"><feTurbulence type="fractalNoise" baseFrequency=".06 .02" numOctaves="1" seed="3"/><feDisplacementMap in="SourceGraphic" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="blur4" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+    <g id="pz-sl"><circle r="13" fill="url(#pz-salami)"/><circle r="12.4" fill="none" stroke="#5A1008" stroke-width="1.2" opacity=".5"/><g fill="#F4B8A2" opacity=".85"><circle cx="-4" cy="-3" r="1.4"/><circle cx="3" cy="2" r="1.2"/><circle cx="-1" cy="6" r="1.1"/><circle cx="5" cy="-5" r="1"/><circle cx="-7" cy="3" r="1"/><circle cx="7" cy="5" r=".9"/></g><ellipse cx="-4" cy="-6" rx="5" ry="2" fill="#fff" opacity=".22"/></g>
+    <g id="pz-leaf"><path d="M0 0C6-10 22-11 30 0 22 11 6 10 0 0Z" fill="url(#pz-basil)"/><path d="M3 0H27" stroke="#24561E" stroke-width=".9" opacity=".7"/></g>
+    <!-- Tiramisu -->
+    <radialGradient id="tr-plate"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".7" stop-color="#EFE6D7"/><stop offset="1" stop-color="#D6C8B0"/></radialGradient>
+    <linearGradient id="tr-top" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#D2E69C"/><stop offset="1" stop-color="#B0CD72"/></linearGradient>
+    <linearGradient id="tr-shade" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".1"/></linearGradient>
+    <clipPath id="tr-front"><polygon points="52,70 150,70 150,142 52,142"/></clipPath>
+    <clipPath id="tr-side"><polygon points="150,70 178,52 178,124 150,142"/></clipPath>
+    <!-- Burger -->
+    <radialGradient id="bg-bun" cx=".4" cy=".3" r=".75"><stop offset="0" stop-color="#F8CC80"/><stop offset=".55" stop-color="#DB9442"/><stop offset="1" stop-color="#A7642A"/></radialGradient>
+    <linearGradient id="bg-bunb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E7A659"/><stop offset="1" stop-color="#B57230"/></linearGradient>
+    <radialGradient id="bg-patty" cx=".5" cy=".3" r=".8"><stop offset="0" stop-color="#7E472B"/><stop offset="1" stop-color="#3B1E10"/></radialGradient>
+    <linearGradient id="bg-cheese" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD24E"/><stop offset="1" stop-color="#F09F1A"/></linearGradient>
+    <!-- Cocktail -->
+    <linearGradient id="ck-liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFC15A"/><stop offset=".6" stop-color="#F7712A"/><stop offset="1" stop-color="#D9481A"/></linearGradient>
+    <linearGradient id="ck-glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".5" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity=".28"/></linearGradient>
+  </defs>
+
+  <symbol id="pizza" viewBox="0 0 200 200">
+    <circle cx="100" cy="100" r="98" fill="url(#pz-crust)"/>
+    <g fill="#7A3B12" opacity=".32"><ellipse cx="30" cy="58" rx="4" ry="2.4" transform="rotate(-40 30 58)"/><ellipse cx="158" cy="36" rx="5" ry="2.6" transform="rotate(40 158 36)"/><ellipse cx="183" cy="112" rx="2.6" ry="5"/><ellipse cx="140" cy="181" rx="5" ry="2.4" transform="rotate(-20 140 181)"/><ellipse cx="52" cy="172" rx="4" ry="2.4" transform="rotate(35 52 172)"/><ellipse cx="15" cy="118" rx="2.4" ry="4.5"/><ellipse cx="100" cy="9" rx="5" ry="2.2"/><ellipse cx="178" cy="70" rx="2.2" ry="3.6"/></g>
+    <circle cx="100" cy="100" r="92" fill="none" stroke="#FFE7BD" stroke-opacity=".45" stroke-width="2" stroke-dasharray="18 22" stroke-linecap="round"/>
+    <circle cx="100" cy="100" r="81" fill="url(#pz-sauce)" filter="url(#melt)"/>
+    <g fill="url(#pz-cheese)" filter="url(#melt)"><ellipse cx="72" cy="70" rx="22" ry="17"/><ellipse cx="126" cy="60" rx="19" ry="15"/><ellipse cx="142" cy="108" rx="21" ry="18"/><ellipse cx="96" cy="118" rx="24" ry="19"/><ellipse cx="58" cy="124" rx="15" ry="14"/><ellipse cx="112" cy="152" rx="18" ry="12"/><ellipse cx="152" cy="146" rx="11" ry="10"/><ellipse cx="88" cy="38" rx="12" ry="9"/><ellipse cx="40" cy="94" rx="10" ry="12"/><ellipse cx="164" cy="80" rx="9" ry="12"/></g>
+    <g fill="#E3A247" opacity=".5"><circle cx="77" cy="66" r="4"/><circle cx="134" cy="112" r="3"/><circle cx="101" cy="124" r="3.4"/><circle cx="121" cy="56" r="2.4"/><circle cx="60" cy="128" r="2.2"/></g>
+    <use href="#pz-sl" x="62" y="94"/><use href="#pz-sl" x="110" y="86"/><use href="#pz-sl" x="144" y="130"/><use href="#pz-sl" x="88" y="150"/><use href="#pz-sl" x="152" y="72"/><use href="#pz-sl" x="98" y="44"/>
+    <use href="#pz-leaf" transform="translate(116 110) rotate(-28)"/><use href="#pz-leaf" transform="translate(66 116) rotate(42)"/><use href="#pz-leaf" transform="translate(140 162) rotate(190)"/><use href="#pz-leaf" transform="translate(84 70) rotate(-130)"/>
+    <g fill="#fff" opacity=".35"><ellipse cx="82" cy="82" rx="4" ry="1.6" transform="rotate(-30 82 82)"/><ellipse cx="132" cy="96" rx="3" ry="1.3"/><ellipse cx="104" cy="134" rx="3.4" ry="1.4" transform="rotate(20 104 134)"/><ellipse cx="60" cy="104" rx="2.6" ry="1.1"/></g>
+  </symbol>
+
+  <symbol id="tiramisu" viewBox="0 0 220 180">
+    <ellipse cx="110" cy="150" rx="102" ry="25" fill="url(#tr-plate)"/>
+    <ellipse cx="110" cy="146" rx="80" ry="17" fill="#F7F1E7" stroke="#E0D3BE"/>
+    <ellipse cx="118" cy="143" rx="66" ry="9" fill="#3B2416" opacity=".28" filter="url(#blur4)"/>
+    <g clip-path="url(#tr-side)"><g transform="matrix(1 -.6429 0 1 0 96.43)" filter="url(#wave)">
+      <rect x="140" y="60" width="50" height="20" fill="#9DB862"/><rect x="140" y="80" width="50" height="16" fill="#E6D7BC"/><rect x="140" y="96" width="50" height="14" fill="#9C6533"/><rect x="140" y="110" width="50" height="14" fill="#E6D7BC"/><rect x="140" y="124" width="50" height="13" fill="#8C5829"/><rect x="140" y="137" width="50" height="12" fill="#4A2D1E"/>
+    </g></g>
+    <polygon points="150,70 178,52 178,124 150,142" fill="#000" opacity=".1"/>
+    <g clip-path="url(#tr-front)">
+      <g filter="url(#wave)"><rect x="40" y="60" width="122" height="20" fill="#B9D27C"/><rect x="40" y="80" width="122" height="16" fill="#FAF0DC"/><rect x="40" y="96" width="122" height="14" fill="#BC7E41"/><rect x="40" y="110" width="122" height="14" fill="#FAF0DC"/><rect x="40" y="124" width="122" height="13" fill="#AE7038"/><rect x="40" y="137" width="122" height="12" fill="#5B3826"/></g>
+      <g fill="#7C4A20" opacity=".45"><ellipse cx="62" cy="103" rx="2" ry="1"/><ellipse cx="84" cy="101" rx="1.6" ry=".9"/><ellipse cx="108" cy="104" rx="2.2" ry="1"/><ellipse cx="132" cy="102" rx="1.6" ry=".9"/><ellipse cx="72" cy="130" rx="2" ry="1"/><ellipse cx="98" cy="131" rx="1.6" ry=".9"/><ellipse cx="124" cy="129" rx="2" ry="1"/><ellipse cx="142" cy="131" rx="1.4" ry=".8"/></g>
+      <rect x="52" y="70" width="98" height="72" fill="url(#tr-shade)"/>
+    </g>
+    <polygon points="52,70 80,52 178,52 150,70" fill="url(#tr-top)"/>
+    <path d="M52 70H150L178 52" fill="none" stroke="#E8F3C4" stroke-width="1.2" opacity=".9"/>
+    <g>
+      <rect x="74" y="62" width="3.4" height="2.2" rx=".6" fill="#6E9A3A" transform="rotate(20 75 63)"/><rect x="88" y="57" width="3" height="2" rx=".6" fill="#8DB64B" transform="rotate(-30 89 58)"/><rect x="96" y="64" width="3.6" height="2.2" rx=".6" fill="#A35D6E" transform="rotate(40 97 65)"/><rect x="104" y="56" width="3" height="2" rx=".6" fill="#6E9A3A"/><rect x="112" y="62" width="3.4" height="2.2" rx=".6" fill="#8DB64B" transform="rotate(60 113 63)"/><rect x="140" y="62" width="3.2" height="2" rx=".6" fill="#6E9A3A" transform="rotate(-20 141 63)"/><rect x="148" y="56" width="3.4" height="2.2" rx=".6" fill="#A35D6E" transform="rotate(25 149 57)"/><rect x="158" y="59" width="3" height="2" rx=".6" fill="#8DB64B"/><rect x="84" y="66" width="2.6" height="1.8" rx=".5" fill="#8DB64B"/><rect x="132" y="66" width="2.8" height="1.8" rx=".5" fill="#6E9A3A" transform="rotate(50 133 67)"/><rect x="164" y="54" width="2.6" height="1.8" rx=".5" fill="#6E9A3A"/>
+    </g>
+    <path d="M108 56C106 46 116 42 122 33 128 42 138 46 136 56 134 60 110 60 108 56Z" fill="#FFF9EC"/>
+    <path d="M112 52C118 48 126 48 132 52M116 45C120 42 124 42 128 45" fill="none" stroke="#EADBC0" stroke-width="1.2"/>
+    <ellipse cx="122" cy="36" rx="4.4" ry="2.8" fill="#8FBF4E" transform="rotate(-20 122 36)"/>
+    <path d="M134 46c6-8 16-9 19-3-6 6-14 7-19 3z" fill="#4E9A3A"/><path d="M135 46c5-2 10-3 16-3" stroke="#2F6B27" stroke-width=".8" fill="none"/>
+  </symbol>
+
+  <symbol id="b-bot" viewBox="0 0 200 180"><path d="M36 130h128a4 4 0 0 1 4 4c0 16-22 26-68 26S32 150 32 134a4 4 0 0 1 4-4z" fill="url(#bg-bunb)"/><path d="M36 129h128a5 5 0 0 1 0 8H36a5 5 0 0 1 0-8z" fill="#F2C887"/></symbol>
+  <symbol id="b-patty" viewBox="0 0 200 180"><rect x="30" y="104" width="140" height="28" rx="14" fill="url(#bg-patty)"/><g stroke="#24100A" stroke-width="2" opacity=".35" stroke-linecap="round"><path d="M48 112l8 12M72 110l8 14M96 110l8 14M120 110l8 14M144 112l8 12"/></g><g fill="#A0603A" opacity=".55"><circle cx="60" cy="122" r="1.5"/><circle cx="88" cy="114" r="1.2"/><circle cx="116" cy="124" r="1.4"/><circle cx="138" cy="116" r="1.2"/></g></symbol>
+  <symbol id="b-cheese" viewBox="0 0 200 180"><path d="M28 96H172L168 104C162 104 160 108 159 116 158 123 152 123 151 116L149 104H120C115 104 113 110 112 120 111 128 104 128 103 120L101 104H72C66 104 64 108 63 113 62 119 56 119 55 113L53 104H32Z" fill="url(#bg-cheese)"/><path d="M32 97H168" stroke="#FFE59A" stroke-width="2" opacity=".7"/></symbol>
+  <symbol id="b-tomato" viewBox="0 0 200 180"><ellipse cx="70" cy="95" rx="32" ry="7.5" fill="#D93A26"/><ellipse cx="70" cy="94" rx="25" ry="5" fill="#EF6247"/><ellipse cx="130" cy="95" rx="32" ry="7.5" fill="#D93A26"/><ellipse cx="130" cy="94" rx="25" ry="5" fill="#EF6247"/><g fill="#F8D68C"><ellipse cx="62" cy="94" rx="2" ry="1"/><ellipse cx="76" cy="93" rx="2" ry="1"/><ellipse cx="124" cy="94" rx="2" ry="1"/><ellipse cx="138" cy="93" rx="2" ry="1"/></g></symbol>
+  <symbol id="b-lettuce" viewBox="0 0 200 180"><path d="M30 88q5.5-9 11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0v6q-5.5 7-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0t-11 0z" fill="#74B944"/><path d="M32 90q5.5-6 11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0t11 0" fill="none" stroke="#4C8E29" stroke-width="1.2" opacity=".7"/></symbol>
+  <symbol id="b-top" viewBox="0 0 200 180"><path d="M32 82C32 40 62 22 100 22S168 40 168 82c0 5-3 8-8 8H40c-5 0-8-3-8-8z" fill="url(#bg-bun)"/><ellipse cx="76" cy="42" rx="22" ry="8" fill="#fff" opacity=".22" transform="rotate(-18 76 42)"/><g fill="#FFF3D6"><ellipse cx="70" cy="52" rx="2.6" ry="1.4" transform="rotate(30 70 52)"/><ellipse cx="92" cy="38" rx="2.6" ry="1.4" transform="rotate(-20 92 38)"/><ellipse cx="112" cy="46" rx="2.6" ry="1.4" transform="rotate(40 112 46)"/><ellipse cx="132" cy="40" rx="2.6" ry="1.4" transform="rotate(-30 132 40)"/><ellipse cx="150" cy="58" rx="2.6" ry="1.4" transform="rotate(20 150 58)"/><ellipse cx="56" cy="66" rx="2.6" ry="1.4" transform="rotate(-40 56 66)"/><ellipse cx="84" cy="62" rx="2.6" ry="1.4" transform="rotate(10 84 62)"/><ellipse cx="106" cy="30" rx="2.6" ry="1.4"/><ellipse cx="124" cy="62" rx="2.6" ry="1.4" transform="rotate(-15 124 62)"/><ellipse cx="142" cy="74" rx="2.6" ry="1.4" transform="rotate(35 142 74)"/><ellipse cx="100" cy="52" rx="2.6" ry="1.4" transform="rotate(50 100 52)"/><ellipse cx="72" cy="76" rx="2.6" ry="1.4" transform="rotate(-10 72 76)"/></g></symbol>
+  <symbol id="food-burger" viewBox="0 0 200 180"><use href="#b-bot"/><use href="#b-patty"/><use href="#b-cheese"/><use href="#b-tomato"/><use href="#b-lettuce"/><use href="#b-top"/></symbol>
+
+  <symbol id="cocktail" viewBox="0 0 160 220">
+    <ellipse cx="80" cy="207" rx="36" ry="7" fill="#000" opacity=".28"/>
+    <ellipse cx="80" cy="200" rx="30" ry="6" fill="url(#ck-glass)" stroke="#fff" stroke-opacity=".5"/>
+    <rect x="77" y="128" width="6" height="72" fill="url(#ck-glass)"/>
+    <path d="M34 20Q30 122 80 132Q130 122 126 20" fill="url(#ck-glass)"/>
+    <path d="M98 2L76 112" stroke="#F4ECDF" stroke-width="5" stroke-linecap="round"/>
+    <path d="M37 58Q36 122 80 128Q124 122 123 58Z" fill="url(#ck-liq)"/>
+    <ellipse cx="80" cy="58" rx="43" ry="5" fill="#FFD27A" opacity=".9"/>
+    <g fill="#fff" opacity=".3"><rect x="50" y="66" width="22" height="20" rx="4" transform="rotate(-12 61 76)"/><rect x="82" y="72" width="22" height="20" rx="4" transform="rotate(14 93 82)"/><rect x="62" y="94" width="20" height="18" rx="4" transform="rotate(6 72 103)"/></g>
+    <path d="M44 30Q42 100 62 118" stroke="#fff" stroke-opacity=".55" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <path d="M34 20Q30 122 80 132Q130 122 126 20" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.8"/>
+    <ellipse cx="80" cy="20" rx="46" ry="6" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="1.5"/>
+    <g transform="translate(120 24)"><circle r="18" fill="#EE7A1F"/><circle r="15" fill="#FFB547"/><path d="M0-15V15M-15 0H15M-10.6-10.6L10.6 10.6M10.6-10.6L-10.6 10.6" stroke="#F59A2E" stroke-width="1.4"/><circle r="2.4" fill="#FFE0A0"/></g>
+  </symbol>
+
+  <symbol id="sb-icons" viewBox="0 0 68 12">
+    <rect x="0" y="8" width="3" height="4" rx=".8"/><rect x="4.5" y="6" width="3" height="6" rx=".8"/><rect x="9" y="3.5" width="3" height="8.5" rx=".8"/><rect x="13.5" y="1" width="3" height="11" rx=".8"/>
+    <path d="M23 4.6a9 9 0 0 1 12 0M25.3 7.3a5.6 5.6 0 0 1 7.4 0" stroke="currentColor" stroke-width="1.7" fill="none" stroke-linecap="round"/><circle cx="29" cy="10.2" r="1.4"/>
+    <rect x="42" y="1" width="22" height="10" rx="3" fill="none" stroke="currentColor" stroke-opacity=".45"/><rect x="44" y="3" width="15" height="6" rx="1.5"/><rect x="65" y="4" width="1.8" height="4" rx=".8" fill-opacity=".45"/>
+  </symbol>
+  <symbol id="qr" viewBox="0 0 21 21">
+    <path fill-rule="evenodd" d="M0 0h7v7H0zM1 1v5h5V1zM2 2h3v3H2zM14 0h7v7h-7zM15 1v5h5V1zM16 2h3v3h-3zM0 14h7v7H0zM1 15v5h5v-5zM2 16h3v3H2z"/>
+    <path d="M8 0h1v1H8zM10 0h1v1h-1zM12 0h1v1h-1zM9 1h1v1H9zM11 1h1v1h-1zM8 2h2v1H8zM12 2h1v1h-1zM10 3h1v1h-1zM8 4h1v1H8zM11 4h2v1h-2zM9 5h1v1H9zM10 6h1v1h-1zM12 6h1v1h-1zM0 8h1v1H0zM2 8h2v1H2zM5 8h1v1H5zM7 8h1v1H7zM9 8h2v1H9zM13 8h1v1h-1zM15 8h2v1h-2zM19 8h2v1h-2zM1 9h1v1H1zM4 9h1v1H4zM6 9h1v1H6zM8 9h1v1H8zM11 9h2v1h-2zM14 9h1v1h-1zM17 9h1v1h-1zM20 9h1v1h-1zM0 10h1v1H0zM2 10h1v1H2zM5 10h1v1H5zM9 10h2v1H9zM13 10h1v1h-1zM15 10h1v1h-1zM18 10h2v1h-2zM1 11h1v1H1zM3 11h2v1H3zM7 11h2v1H7zM11 11h1v1h-1zM14 11h1v1h-1zM16 11h2v1h-2zM20 11h1v1h-1zM0 12h1v1H0zM2 12h1v1H2zM5 12h2v1H5zM9 12h1v1H9zM12 12h2v1h-2zM15 12h1v1h-1zM18 12h1v1h-1zM8 13h1v1H8zM10 13h2v1h-2zM14 13h1v1h-1zM16 13h1v1h-1zM19 13h2v1h-2zM9 14h1v1H9zM12 14h2v1h-2zM15 14h1v1h-1zM17 14h2v1h-2zM8 15h1v1H8zM10 15h1v1h-1zM14 15h1v1h-1zM16 15h1v1h-1zM19 15h1v1h-1zM9 16h1v1H9zM11 16h2v1h-2zM15 16h1v1h-1zM17 16h2v1h-2zM20 16h1v1h-1zM8 17h1v1H8zM10 17h1v1h-1zM13 17h2v1h-2zM16 17h1v1h-1zM19 17h1v1h-1zM9 18h1v1H9zM11 18h2v1h-2zM15 18h1v1h-1zM17 18h2v1h-2zM20 18h1v1h-1zM8 19h1v1H8zM10 19h1v1h-1zM13 19h1v1h-1zM16 19h1v1h-1zM19 19h1v1h-1zM9 20h1v1H9zM11 20h2v1h-2zM14 20h2v1h-2zM17 20h1v1h-1zM20 20h1v1h-1z"/>
+  </symbol>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a class="logo" href="#top" aria-label="Stammplatz – Startseite">
+      <svg class="logo-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="currentColor"/><circle cx="12" cy="12" r="8.6" fill="none" stroke="#F4ECDF" stroke-width=".7" stroke-dasharray="1.4 1.2"/><polygon points="12,6.6 13.6,10.2 17.4,10.5 14.5,12.9 15.4,16.7 12,14.6 8.6,16.7 9.5,12.9 6.6,10.5 10.4,10.2" fill="#F4ECDF"/></svg>
+      <span>Stammplatz</span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Hauptnavigation">
+      <a href="#leistungen" data-i18n="nav.services">Leistungen</a>
+      <a href="#arbeiten" data-i18n="nav.work">Arbeiten</a>
+      <a href="#stempelkarte" data-i18n="nav.stamp">Stempelkarte</a>
+      <a href="#pakete" data-i18n="nav.pricing">Preise</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#kontakt" class="nav-cta-mobile" data-i18n="nav.contact">Kontakt</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button type="button" data-lang="de" aria-pressed="true">DE</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a href="#kontakt" class="btn btn-small btn-ink header-cta" data-i18n="nav.cta">Anfragen</a>
+      <button class="burger" id="burger" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="nav">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow reveal" data-i18n="hero.eyebrow">Digitales für Restaurants, Cafés &amp; Imbisse</p>
+      <h1 class="reveal" data-i18n="hero.title">Gäste, die <em>wiederkommen.</em></h1>
+      <p class="lead reveal" data-i18n="hero.lead">Wir machen Speisekarten, QR-Menüs, animierte TV-Menüs, Promo-Videos, Clips für Instagram &amp; TikTok, Websites und digitale Stempelkarten. Sie schicken uns Ihre Karte und Ihre Wünsche, wir erledigen den Rest.</p>
+      <div class="hero-ctas reveal">
+        <a href="#kontakt" class="btn btn-primary" data-i18n="hero.cta1">Kostenloses Erstgespräch</a>
+        <a href="#arbeiten" class="btn btn-ghost" data-i18n="hero.cta2">Arbeiten ansehen</a>
+      </div>
+      <ul class="trust reveal">
+        <li data-i18n="hero.t1">Schon 50+ Restaurants betreut</li>
+        <li data-i18n="hero.t2">Faire Festpreise</li>
+        <li data-i18n="hero.t3">Sie sprechen direkt mit uns</li>
+      </ul>
+    </div>
+
+    <div class="hero-visual reveal" aria-hidden="true">
+      <!-- Paper menu -->
+      <div class="hv-menu float-a">
+        <p class="hv-menu-name">Trattoria Luna</p>
+        <p class="hv-menu-sub">— Speisekarte —</p>
+        <p class="hv-menu-sec">Antipasti</p>
+        <p class="hv-row"><span>Bruschetta classica</span><i></i><b>6,50</b></p>
+        <p class="hv-row"><span>Vitello tonnato</span><i></i><b>11,90</b></p>
+        <p class="hv-menu-sec">Pasta</p>
+        <p class="hv-row"><span>Tagliatelle al ragù</span><i></i><b>13,50</b></p>
+        <p class="hv-row"><span>Linguine al limone</span><i></i><b>12,00</b></p>
+        <p class="hv-row"><span>Gnocchi burro e salvia</span><i></i><b>12,50</b></p>
+        <p class="hv-menu-sec">Dolci</p>
+        <p class="hv-row"><span>Tiramisu della casa</span><i></i><b>6,90</b></p>
+      </div>
+
+      <!-- Phone: QR menu -->
+      <div class="device hv-phone float-b">
+        <div class="device-body">
+          <i class="db db-a"></i><i class="db db-v1"></i><i class="db db-v2"></i><i class="db db-p"></i>
+          <div class="device-screen">
+            <span class="device-island"></span>
+            <div class="sb sb-light"><span>9:41</span><svg><use href="#sb-icons"/></svg></div>
+            <div class="qr-hero">
+              <svg class="qr-pizza"><use href="#pizza"/></svg>
+              <div class="qr-hero-txt"><b>Trattoria Luna</b><small>Holzofen-Pizza &amp; Pasta</small></div>
+            </div>
+            <div class="qr-chips"><span class="on">Pizza</span><span>Pasta</span><span>Dolci</span><span>Drinks</span></div>
+            <div class="qr-item"><span class="qr-thumb"><svg><use href="#pizza"/></svg></span><span class="qr-txt"><b>Margherita</b><small>Tomate, Fior di latte</small></span><span class="qr-price">9,50</span></div>
+            <div class="qr-item"><span class="qr-thumb r2"><svg><use href="#pizza"/></svg></span><span class="qr-txt"><b>Diavola</b><small>Salami piccante, Chili</small></span><span class="qr-price">11,00</span></div>
+            <div class="qr-item"><span class="qr-thumb r3"><svg><use href="#pizza"/></svg></span><span class="qr-txt"><b>Salsiccia</b><small>Fenchelwurst, Friarielli</small></span><span class="qr-price">12,50</span></div>
+            <div class="qr-item"><span class="qr-thumb r4"><svg><use href="#pizza"/></svg></span><span class="qr-txt"><b>Quattro Formaggi</b><small>Gorgonzola, Parmigiano</small></span><span class="qr-price">13,00</span></div>
+            <div class="qr-bar"><span>Allergene &amp; Zusatzstoffe</span><span>PDF</span></div>
+            <span class="device-home"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stamp card -->
+      <div class="hv-stamp float-c">
+        <div class="hv-stamp-top"><span>Stempelkarte</span><span>7/10</span></div>
+        <div class="hv-stamp-grid">
+          <i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i>
+          <i class="on"></i><i class="on"></i><i></i><i></i><i class="gift"></i>
+        </div>
+      </div>
+
+      <!-- Rotating badge -->
+      <svg class="hv-badge" viewBox="0 0 120 120">
+        <defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+        <circle cx="60" cy="60" r="58" class="hv-badge-bg"/>
+        <text><textPath href="#circ">MEHR STAMMGÄSTE · MEHR STAMMGÄSTE · </textPath></text>
+        <polygon points="60,44 64.4,54 75,54.8 67,61.6 69.6,72 60,66.2 50.4,72 53,61.6 45,54.8 55.6,54" class="hv-badge-star"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee-wrap" aria-hidden="true">
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Speisekarten</span><span>✦</span><span>QR-Menüs</span><span>✦</span><span>TV-Menüboards</span><span>✦</span><span>Promo-Videos</span><span>✦</span><span>Instagram</span><span>✦</span><span>TikTok</span><span>✦</span><span>Websites</span><span>✦</span><span>Stempelkarten</span><span>✦</span>
+    <span>Speisekarten</span><span>✦</span><span>QR-Menüs</span><span>✦</span><span>TV-Menüboards</span><span>✦</span><span>Promo-Videos</span><span>✦</span><span>Instagram</span><span>✦</span><span>TikTok</span><span>✦</span><span>Websites</span><span>✦</span><span>Stempelkarten</span><span>✦</span>
+  </div>
+</div>
+</div>
+
+<!-- ============ ZAHLEN ============ -->
+<section class="stats" aria-label="Stammplatz in Zahlen">
+  <div class="container stats-grid">
+    <div class="stat stat-main reveal">
+      <p class="stat-num"><span class="count" data-to="50">50</span><span class="stat-plus">+</span></p>
+      <p class="stat-label" data-i18n="st.1">Restaurants haben wir schon digital gemacht</p>
+    </div>
+    <div class="stat reveal">
+      <p class="stat-num">24<small>h</small></p>
+      <p class="stat-label" data-i18n="st.2">bis zur Antwort auf Ihre Anfrage</p>
+    </div>
+    <div class="stat reveal">
+      <p class="stat-num">5<small data-i18n="st.days">Tage</small></p>
+      <p class="stat-label" data-i18n="st.3">bis Ihre neue Speisekarte fertig ist</p>
+    </div>
+    <div class="stat reveal">
+      <p class="stat-num">1</p>
+      <p class="stat-label" data-i18n="st.4">Ansprechpartner für alles</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OHNE / MIT UNS ============ -->
+<section class="section" id="unterschied">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal" data-i18n="cmp.eyebrow">Der Unterschied</p>
+      <h2 class="reveal" data-i18n="cmp.title">Was sich <em>für Sie ändert.</em></h2>
+    </div>
+    <div class="compare">
+      <article class="cmp reveal">
+        <h3 data-i18n="cmp.1.t">Neue Preise</h3>
+        <div class="cmp-row cmp-without">
+          <span class="cmp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span>
+          <div><span class="cmp-tag" data-i18n="cmp.without">Ohne uns</span><p data-i18n="cmp.1.a">Alle Karten neu drucken und bis dahin mit dem Kuli korrigieren.</p></div>
+        </div>
+        <div class="cmp-row cmp-with">
+          <span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <div><span class="cmp-tag" data-i18n="cmp.with">Mit uns</span><p data-i18n="cmp.1.b">Sie schreiben uns kurz, wir ändern das Online-Menü. Neu drucken müssen Sie nichts.</p></div>
+        </div>
+      </article>
+      <article class="cmp reveal">
+        <h3 data-i18n="cmp.2.t">Stammgäste</h3>
+        <div class="cmp-row cmp-without">
+          <span class="cmp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span>
+          <div><span class="cmp-tag" data-i18n="cmp.without">Ohne uns</span><p data-i18n="cmp.2.a">Gäste kommen einmal, und Sie wissen nicht, ob sie wiederkommen.</p></div>
+        </div>
+        <div class="cmp-row cmp-with">
+          <span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <div><span class="cmp-tag" data-i18n="cmp.with">Mit uns</span><p data-i18n="cmp.2.b">Die Stempelkarte ist auf dem Handy des Gastes. Wer länger nicht da war, bekommt eine Nachricht.</p></div>
+        </div>
+      </article>
+      <article class="cmp reveal">
+        <h3 data-i18n="cmp.3.t">Telefon</h3>
+        <div class="cmp-row cmp-without">
+          <span class="cmp-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7L7 17"/></svg></span>
+          <div><span class="cmp-tag" data-i18n="cmp.without">Ohne uns</span><p data-i18n="cmp.3.a">Es klingelt, während Sie am Herd stehen. Der Anrufer legt auf.</p></div>
+        </div>
+        <div class="cmp-row cmp-with">
+          <span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
+          <div><span class="cmp-tag" data-i18n="cmp.with">Mit uns</span><p data-i18n="cmp.3.b">Der Telefon-Assistent geht ran und beantwortet die Frage für Sie.</p></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="section" id="leistungen">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal" data-i18n="svc.eyebrow">Leistungen</p>
+      <h2 class="reveal" data-i18n="svc.title">Alles für Ihr Restaurant <em>aus einer Hand.</em></h2>
+      <p class="section-lead reveal" data-i18n="svc.lead">Ein Ansprechpartner für Karte, TV-Menü, Website und Social Media. Alles bekommt denselben Look.</p>
+    </div>
+
+    <div class="services">
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4"/></svg></span><span class="num">01</span></div>
+        <h3 data-i18n="svc.1.t">Speisekarte &amp; PDF</h3>
+        <p data-i18n="svc.1.d">Klares Layout, gut lesbare Schrift, Allergene gekennzeichnet. Sie bekommen die Karte druckfertig und als PDF für Website &amp; WhatsApp.</p>
+        <ul class="tags"><li data-i18n="svc.1.a">Druck</li><li>PDF</li><li data-i18n="svc.1.b">Allergene</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="14" y="3.5" width="6.5" height="6.5" rx="1"/><rect x="3.5" y="14" width="6.5" height="6.5" rx="1"/><path d="M14 14h2.5v2.5H14zM18 18h2.5v2.5H18zM18 14h2.5M14 20.5h2"/></svg></span><span class="num">02</span></div>
+        <h3 data-i18n="svc.2.t">QR-Code-Menü</h3>
+        <p data-i18n="svc.2.d">Gäste scannen den Code am Tisch und sehen Ihre Speisekarte auf dem Handy, ohne App. Ändert sich ein Preis, schreiben Sie uns, und wir ändern ihn.</p>
+        <ul class="tags"><li data-i18n="svc.2.a">Tischaufsteller</li><li data-i18n="svc.2.b">Ohne App</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="4" width="19" height="13" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M10.3 8.3v4.6l3.9-2.3z" fill="currentColor" stroke="none"/></svg></span><span class="num">03</span></div>
+        <h3 data-i18n="svc.3.t">Animiertes TV-Menü</h3>
+        <p data-i18n="svc.3.d">Ein bewegtes Menü für den Bildschirm über der Theke, mit Tagesgerichten, Angeboten oder Happy Hour. Die Gäste sehen es schon beim Anstehen.</p>
+        <ul class="tags"><li>Animation</li><li>Full HD / 4K</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 9.2v5.6l4.6-2.8z" fill="currentColor" stroke="none"/><path d="M2.5 8v8M21.5 8v8"/></svg></span><span class="num">04</span></div>
+        <h3 data-i18n="svc.4.t">Promo-Videos &amp; Animationen</h3>
+        <p data-i18n="svc.4.d">Rabatt-Aktionen, Happy Hour, das neue Gericht der Woche: kurze, bewegte Clips für Ihren Bildschirm, Instagram, TikTok und den WhatsApp-Status.</p>
+        <ul class="tags"><li>Reels</li><li>Stories</li><li data-i18n="svc.4.a">Rabatte</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r=".9" fill="currentColor"/></svg></span><span class="num">05</span></div>
+        <span class="ribbon ribbon-new" data-i18n="svc.soc.r">Neu</span>
+        <h3 data-i18n="svc.soc.t">Instagram &amp; TikTok</h3>
+        <p data-i18n="svc.soc.d">Wir planen, filmen und posten regelmäßig Reels, Stories und Beiträge für Ihr Restaurant, passend zu Ihrer Karte und Ihrem Stil.</p>
+        <ul class="tags"><li>Instagram</li><li>TikTok</li><li data-i18n="svc.soc.a">Monatsabo</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="6" cy="6.5" r=".6" fill="currentColor"/><circle cx="8" cy="6.5" r=".6" fill="currentColor"/><path d="M7 13h6M7 16h4"/></svg></span><span class="num">06</span></div>
+        <h3 data-i18n="svc.web.t">Restaurant-Website</h3>
+        <p data-i18n="svc.web.d">Speisekarte, Öffnungszeiten, Anfahrt und Reservierung auf einer Seite, gebaut fürs Handy. So finden Gäste Sie auch über Google.</p>
+        <ul class="tags"><li data-i18n="svc.web.a">Mobil</li><li>Google</li><li data-i18n="svc.web.b">DSGVO</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-6.2-6.5-11a6.5 6.5 0 0 1 13 0c0 4.8-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.4"/></svg></span><span class="num">07</span></div>
+        <h3 data-i18n="svc.ggl.t">Google-Profil &amp; Bewertungen</h3>
+        <p data-i18n="svc.ggl.d">Wir richten Ihren Eintrag bei Google Maps ein, mit Fotos, aktuellen Öffnungszeiten und Speisekarte. Dazu bekommen Sie eine einfache Möglichkeit, Gäste um eine Bewertung zu bitten.</p>
+        <ul class="tags"><li>Google Maps</li><li data-i18n="svc.ggl.a">Bewertungen</li></ul>
+      </article>
+
+      <article class="service service-featured reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="3"/><circle cx="7.5" cy="12" r="2" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="currentColor"/><circle cx="16.5" cy="12" r="2"/></svg></span><span class="num">08</span></div>
+        <span class="ribbon" data-i18n="svc.5.r">Unser Liebling</span>
+        <h3 data-i18n="svc.5.t">Digitale Stempelkarte</h3>
+        <p data-i18n="svc.5.d">Gäste sammeln Stempel auf dem Handy statt auf einem Papierkärtchen. Wer länger nicht da war, bekommt automatisch eine Einladung.</p>
+        <ul class="tags"><li data-i18n="svc.5.a">Treue</li><li data-i18n="svc.5.b">Nachrichten</li><li data-i18n="svc.5.c">Ohne App</li></ul>
+      </article>
+
+      <article class="service reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M4.5 4.5h15a2 2 0 0 1 2 2v8.5a2 2 0 0 1-2 2h-8l-4.5 3.5v-3.5H4.5a2 2 0 0 1-2-2V6.5a2 2 0 0 1 2-2z"/><circle cx="8" cy="10.8" r=".9" fill="currentColor"/><circle cx="12" cy="10.8" r=".9" fill="currentColor"/><circle cx="16" cy="10.8" r=".9" fill="currentColor"/></svg></span><span class="num">09</span></div>
+        <span class="ribbon ribbon-new" data-i18n="svc.bot.r">Neu</span>
+        <h3 data-i18n="svc.bot.t">Telefon-Assistent</h3>
+        <p data-i18n="svc.bot.d">Der Assistent geht ans Telefon, wenn Sie keine Hand frei haben, auch nachts. Er beantwortet Fragen zu Öffnungszeiten, Adresse, Speisekarte und Reservierung. Sie legen fest, was er sagt und wann er rangeht.</p>
+        <ul class="tags"><li data-i18n="svc.bot.c">Telefon</li><li data-i18n="svc.bot.a">Rund um die Uhr</li><li data-i18n="svc.bot.b">Frei einstellbar</li></ul>
+      </article>
+
+      <article class="service service-more reveal">
+        <div class="service-top"><span class="icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><span class="num">10</span></div>
+        <h3 data-i18n="svc.6.t">Und alles <em>dazwischen.</em></h3>
+        <p data-i18n="svc.6.d">Flyer, Gutscheine, Tischaufsteller, Social-Media-Grafiken, Fotos. Fragen Sie einfach.</p>
+        <a href="#kontakt" class="btn btn-ghost btn-small" data-i18n="svc.6.b">Einfach fragen</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK / SHOWROOM ============ -->
+<section class="section section-dark showroom-section" id="arbeiten">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal" data-i18n="work.eyebrow">Arbeiten</p>
+      <h2 class="reveal" data-i18n="work.title">Was wir <em>gemacht haben.</em></h2>
+      <p class="section-lead reveal" data-i18n="work.lead">Zuerst echte Kundenprojekte, dann ein paar Beispiele: TV-Menüs, Speisekarten, Rabatt-Animationen und Reels für Instagram &amp; TikTok.</p>
+    </div>
+
+    <div class="showroom">
+      <!-- ECHTES PROJEKT: PALMA DÖNER -->
+      <article class="tile tile-case reveal">
+        <div class="case-media">
+          <div class="tv">
+            <div class="tv-screen case-screen">
+              <video id="caseVideo" muted loop playsinline preload="none" poster="assets/work/web/palma-doener.jpg" src="assets/work/web/palma-doener.mp4"></video>
+              <span class="live-dot">Live</span>
+            </div>
+          </div>
+          <div class="case-thumbs" role="tablist" aria-label="TV-Menüs">
+            <button type="button" class="case-thumb on" role="tab" aria-selected="true" data-video="palma-doener"><img src="assets/work/web/palma-doener-thumb.jpg" alt="" loading="lazy"><span>Döner</span></button>
+            <button type="button" class="case-thumb" role="tab" aria-selected="false" data-video="palma-pide"><img src="assets/work/web/palma-pide-thumb.jpg" alt="" loading="lazy"><span>Pide</span></button>
+            <button type="button" class="case-thumb" role="tab" aria-selected="false" data-video="palma-pizza"><img src="assets/work/web/palma-pizza-thumb.jpg" alt="" loading="lazy"><span>Pizza</span></button>
+            <button type="button" class="case-thumb" role="tab" aria-selected="false" data-video="palma-drinks"><img src="assets/work/web/palma-drinks-thumb.jpg" alt="" loading="lazy"><span data-i18n="case.drinks">Getränke</span></button>
+            <button type="button" class="case-thumb" role="tab" aria-selected="false" data-video="palma-welcome"><img src="assets/work/web/palma-welcome-thumb.jpg" alt="" loading="lazy"><span data-i18n="case.welcome">Begrüßung</span></button>
+          </div>
+        </div>
+
+        <div class="case-copy">
+          <span class="demo-tag case-tag" data-i18n="case.tag">Echtes Kundenprojekt</span>
+          <h3 class="case-title">Palma Döner</h3>
+          <p data-i18n="case.d">Das TV-Menü für die Bildschirme über der Theke und die gedruckte Speisekarte im selben Design. Auf den Screens bewegen sich Feuer und Rauch um die Gerichte.</p>
+          <ul class="case-facts">
+            <li><b>5</b><span data-i18n="case.f1">animierte Menü-Screens</span></li>
+            <li><b>6</b><span data-i18n="case.f2">Seiten Speisekarte, Druck &amp; PDF</span></li>
+            <li><b>QR</b><span data-i18n="case.f4">Aufsteller für die Tische</span></li>
+            <li><b>✓</b><span data-i18n="case.f3">Allergene &amp; Zusatzstoffe gekennzeichnet</span></li>
+          </ul>
+        </div>
+
+        <div class="case-pages" data-gallery="palma-menu-1.jpg,palma-menu-2.jpg,palma-menu-3.jpg,palma-menu-4.jpg,palma-menu-5.jpg,palma-menu-6.jpg,qr-palma.jpg" data-name="Palma Döner">
+          <p class="case-pages-t" data-i18n="case.pages">Die Speisekarte. Zum Vergrößern antippen.</p>
+          <div class="case-pages-row rows-7">
+            <button type="button" class="case-page" data-i="0"><img src="assets/work/web/palma-menu-1-thumb.jpg" alt="Palma Döner Speisekarte – Titelseite" loading="lazy"></button>
+            <button type="button" class="case-page" data-i="1"><img src="assets/work/web/palma-menu-2-thumb.jpg" alt="Palma Döner Speisekarte – Döner" loading="lazy"></button>
+            <button type="button" class="case-page" data-i="2"><img src="assets/work/web/palma-menu-3-thumb.jpg" alt="Palma Döner Speisekarte – Pide" loading="lazy"></button>
+            <button type="button" class="case-page" data-i="3"><img src="assets/work/web/palma-menu-4-thumb.jpg" alt="Palma Döner Speisekarte – Pizza" loading="lazy"></button>
+            <button type="button" class="case-page" data-i="4"><img src="assets/work/web/palma-menu-5-thumb.jpg" alt="Palma Döner Speisekarte – Pommes &amp; Snacks" loading="lazy"></button>
+            <button type="button" class="case-page" data-i="5"><img src="assets/work/web/palma-menu-6-thumb.jpg" alt="Palma Döner Speisekarte – Teigspezialitäten" loading="lazy"></button>
+            <button type="button" class="case-page proj-qr" data-i="6"><img src="assets/work/web/qr-palma.jpg" alt="Palma Döner QR-Aufsteller für die Tische" loading="lazy"><span>QR</span></button>
+          </div>
+        </div>
+      </article>
+
+      <!-- ECHTES PROJEKT: EISCAFE DA TONY -->
+      <article class="tile tile-proj proj-eis reveal" data-gallery="eiscafe-menu-1.jpg,eiscafe-menu-2.jpg,eiscafe-menu-3.jpg,eiscafe-menu-4.jpg,eiscafe-menu-5.jpg,eiscafe-menu-6.jpg,qr-eiscafe.jpg" data-name="Eiscafe da Tony">
+        <div class="proj-head">
+          <span class="demo-tag case-tag" data-i18n="case.tag">Echtes Kundenprojekt</span>
+          <h3 class="proj-title">Eiscafe da Tony</h3>
+          <p data-i18n="proj.eis.d">Speisekarte mit 6 Seiten und ein QR-Aufsteller für die Tische. Die Gäste scannen den Code und sehen die Karte auf dem Handy.</p>
+        </div>
+        <div class="proj-row">
+          <button type="button" class="case-page" data-i="0"><img src="assets/work/web/eiscafe-menu-1-thumb.jpg" alt="Eiscafe da Tony Speisekarte, Titelseite" loading="lazy"></button>
+          <button type="button" class="case-page" data-i="1"><img src="assets/work/web/eiscafe-menu-2-thumb.jpg" alt="Eiscafe da Tony Speisekarte, Eis-Spezialitäten" loading="lazy"></button>
+          <button type="button" class="case-page" data-i="2"><img src="assets/work/web/eiscafe-menu-3-thumb.jpg" alt="Eiscafe da Tony Speisekarte, Seite 3" loading="lazy"></button>
+          <button type="button" class="case-page proj-qr" data-i="6"><img src="assets/work/web/qr-eiscafe.jpg" alt="Eiscafe da Tony QR-Aufsteller für die Tische" loading="lazy"><span>QR</span></button>
+        </div>
+        <div class="proj-links">
+          <button type="button" class="proj-link" data-i="0" data-i18n="proj.all6">Alle 6 Seiten ansehen</button>
+          <a class="proj-link" href="https://userfromgermany.github.io/Eiscafe/eiscafe01.pdf" target="_blank" rel="noopener" data-i18n="proj.live">QR-Menü live öffnen ↗</a>
+        </div>
+      </article>
+
+      <!-- ECHTES PROJEKT: PIZZA ROMA -->
+      <article class="tile tile-proj proj-roma reveal" data-gallery="roma-menu-1.jpg,roma-menu-2.jpg,roma-menu-3.jpg,roma-menu-4.jpg" data-name="Pizza Roma">
+        <div class="proj-head">
+          <span class="demo-tag case-tag" data-i18n="case.tag">Echtes Kundenprojekt</span>
+          <h3 class="proj-title">Pizza Roma</h3>
+          <p data-i18n="proj.roma.d">Speisekarte mit 4 Seiten im Rom-Design, mit Fotos der Pizzen und allen Preisen.</p>
+        </div>
+        <div class="proj-row">
+          <button type="button" class="case-page" data-i="0"><img src="assets/work/web/roma-menu-1-thumb.jpg" alt="Pizza Roma Speisekarte, Titelseite" loading="lazy"></button>
+          <button type="button" class="case-page" data-i="1"><img src="assets/work/web/roma-menu-2-thumb.jpg" alt="Pizza Roma Speisekarte, Pizzen" loading="lazy"></button>
+          <button type="button" class="case-page" data-i="2"><img src="assets/work/web/roma-menu-3-thumb.jpg" alt="Pizza Roma Speisekarte, Seite 3" loading="lazy"></button>
+          <button type="button" class="case-page" data-i="3"><img src="assets/work/web/roma-menu-4-thumb.jpg" alt="Pizza Roma Speisekarte, Seite 4" loading="lazy"></button>
+        </div>
+        <div class="proj-links">
+          <button type="button" class="proj-link" data-i="0" data-i18n="proj.all4">Alle 4 Seiten ansehen</button>
+        </div>
+      </article>
+
+      <p class="showroom-sub reveal" data-i18n="work.demos">Beispiele, wie es bei Ihnen aussehen kann:</p>
+
+      <!-- REEL -->
+      <figure class="tile tile-reel reveal">
+        <div class="tile-media">
+          <div class="device reel" aria-hidden="true">
+            <div class="device-body">
+              <i class="db db-a"></i><i class="db db-v1"></i><i class="db db-v2"></i><i class="db db-p"></i>
+              <div class="device-screen reel-screen">
+                <span class="device-island"></span>
+                <div class="sb sb-light"><span>9:41</span><svg><use href="#sb-icons"/></svg></div>
+                <div class="reel-bars"><i class="full"></i><i class="run"></i><i></i></div>
+                <div class="reel-acc"><span class="reel-av"></span><b>trattoria.luna</b><small>2 Std.</small></div>
+                <div class="reel-content">
+                  <span class="reel-new">Neu</span>
+                  <p class="reel-title">Pistazien-<br><em>Tiramisu</em></p>
+                  <p class="reel-sub">Nur diese Woche · 6,90 €</p>
+                  <div class="reel-dish">
+                    <div class="reel-crumbs"><i></i><i></i><i></i><i></i><i></i></div>
+                    <svg class="reel-tira"><use href="#tiramisu"/></svg>
+                  </div>
+                </div>
+                <span class="reel-sticker">-20%</span>
+                <div class="reel-hearts"><i></i><i></i><i></i><i></i></div>
+                <div class="reel-cta">Jetzt reservieren</div>
+                <span class="device-home home-light"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="tile-cap">
+          <span class="demo-tag">Live-Demo</span>
+          <h3 data-i18n="work.reel.t">Reels &amp; TikToks</h3>
+          <p data-i18n="work.reel.d">Kurze Videos für Instagram, TikTok und den WhatsApp-Status, zum Beispiel für neue Gerichte, Events oder Aktionen.</p>
+        </figcaption>
+      </figure>
+
+      <!-- PROMO -->
+      <figure class="tile tile-promo reveal">
+        <div class="tile-media">
+          <div class="promo" aria-hidden="true">
+            <div class="promo-rays"></div>
+            <div class="promo-confetti"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <svg class="promo-pizza"><use href="#pizza"/></svg>
+            <p class="promo-kicker">Nur heute</p>
+            <p class="promo-big">-30<span>%</span></p>
+            <p class="promo-sub">auf alle Pizzen</p>
+            <p class="promo-timer">noch <b id="promoTimer">05:59:59</b></p>
+          </div>
+        </div>
+        <figcaption class="tile-cap">
+          <span class="demo-tag">Live-Demo</span>
+          <h3 data-i18n="work.promo.t">Rabatt-Animationen</h3>
+          <p data-i18n="work.promo.d">Animationen für „Nur heute“, das Mittagsangebot oder die Happy Hour. Für den Bildschirm im Laden und für den Feed.</p>
+        </figcaption>
+      </figure>
+
+      <!-- SOCIAL PROFILE -->
+      <figure class="tile tile-social reveal">
+        <div class="tile-media">
+          <div class="social-wrap" aria-hidden="true">
+            <span class="ig-badge"><b>↑</b> +<span id="followGain">2.666</span> Follower</span>
+            <div class="device ig-device">
+              <div class="device-body">
+                <i class="db db-a"></i><i class="db db-v1"></i><i class="db db-v2"></i><i class="db db-p"></i>
+                <div class="device-screen ig-screen">
+                  <span class="device-island"></span>
+                  <div class="sb"><span>9:41</span><svg><use href="#sb-icons"/></svg></div>
+                  <div class="ig-top"><b>trattoria.luna</b><span>＋ ☰</span></div>
+                  <div class="ig-prof">
+                    <span class="ig-av"><i></i></span>
+                    <div class="ig-stats">
+                      <span><b>128</b><small>Beiträge</small></span>
+                      <span><b id="followers">1.204</b><small>Follower</small></span>
+                      <span><b>210</b><small>Gefolgt</small></span>
+                    </div>
+                  </div>
+                  <div class="ig-bio"><b>Trattoria Luna</b><br>Holzofen-Pizza &amp; hausgemachte Pasta<br><span>luna.stammplatz.de</span></div>
+                  <div class="ig-btns"><span class="follow">Folgen</span><span>Nachricht</span></div>
+                  <div class="ig-tabs"><span class="on"><svg viewBox="0 0 12 12"><path d="M0 0h3.5v3.5H0zM4.25 0h3.5v3.5h-3.5zM8.5 0H12v3.5H8.5zM0 4.25h3.5v3.5H0zM4.25 4.25h3.5v3.5h-3.5zM8.5 4.25H12v3.5H8.5zM0 8.5h3.5V12H0zM4.25 8.5h3.5V12h-3.5zM8.5 8.5H12V12H8.5z"/></svg></span><span><svg viewBox="0 0 12 12"><rect x=".6" y=".6" width="10.8" height="10.8" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M4.6 3.8v4.4L8.2 6z"/></svg></span></div>
+                  <div class="ig-grid">
+                    <span class="ig-p c-terra"><svg><use href="#pizza"/></svg></span>
+                    <span class="ig-p c-mustard ig-txt"><b>-30%</b></span>
+                    <span class="ig-p c-sage ig-reel"><svg><use href="#tiramisu"/></svg></span>
+                    <span class="ig-p c-cream"><svg><use href="#food-burger"/></svg></span>
+                    <span class="ig-p c-ink ig-reel"><svg><use href="#cocktail"/></svg></span>
+                    <span class="ig-p c-terra ig-txt"><b>Neu!</b></span>
+                    <span class="ig-p c-cream"><svg><use href="#tiramisu"/></svg></span>
+                    <span class="ig-p c-ink"><svg><use href="#pizza"/></svg></span>
+                    <span class="ig-p c-mustard ig-reel"><svg><use href="#food-burger"/></svg></span>
+                    <span class="ig-p c-ink ig-txt ig-neon"><b>Happy<br>Hour</b></span>
+                    <span class="ig-p c-sage"><svg><use href="#pizza"/></svg></span>
+                    <span class="ig-p c-terra ig-reel"><svg><use href="#cocktail"/></svg></span>
+                  </div>
+                  <span class="device-home"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="tile-cap">
+          <span class="demo-tag" data-i18n="work.tag.ex">Beispiel</span>
+          <h3 data-i18n="work.soc.t">Instagram &amp; TikTok Betreuung</h3>
+          <p data-i18n="work.soc.d">Ein Beispielprofil: So sieht ein Account aus, den wir betreuen.</p>
+        </figcaption>
+      </figure>
+
+      <!-- CTA -->
+      <div class="tile tile-cta reveal">
+        <p class="tile-cta-big" data-i18n="work.cta.t">Ihr Restaurant <em>als Nächstes?</em></p>
+        <p data-i18n="work.cta.d">Wir haben schon über 50 Restaurants betreut. Im Erstgespräch zeigen wir Ihnen weitere Beispiele, die zu Ihrer Küche passen.</p>
+        <a href="#kontakt" class="btn btn-light" data-i18n="work.cta.b">Projekt anfragen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STAMP CARD FEATURE ============ -->
+<section class="section section-paper2" id="stempelkarte">
+  <div class="container feature-grid">
+    <div class="feature-copy">
+      <p class="eyebrow reveal" data-i18n="ft.eyebrow">Stempelkarte</p>
+      <h2 class="reveal" data-i18n="ft.title">Aus Laufkundschaft werden <em>Stammgäste.</em></h2>
+      <p class="section-lead reveal" data-i18n="ft.lead">Neue Gäste zu gewinnen kostet mehr, als bestehende zurückzuholen. Die digitale Stempelkarte liegt auf dem Handy des Gastes und erinnert ihn an Ihr Restaurant.</p>
+      <ol class="steps-list">
+        <li class="reveal"><span>1</span><div><b data-i18n="ft.s1.t">QR-Code scannen</b><p data-i18n="ft.s1.d">Der Gast scannt beim Bezahlen, ohne eine App zu laden.</p></div></li>
+        <li class="reveal"><span>2</span><div><b data-i18n="ft.s2.t">Stempel sammeln</b><p data-i18n="ft.s2.d">Jeder Besuch landet direkt auf dem Handy.</p></div></li>
+        <li class="reveal"><span>3</span><div><b data-i18n="ft.s3.t">Belohnung einlösen</b><p data-i18n="ft.s3.d">Nach z. B. 8 Besuchen: Dessert, Kaffee oder Rabatt aufs Haus.</p></div></li>
+        <li class="reveal"><span>4</span><div><b data-i18n="ft.s4.t">„Wir vermissen Sie!“</b><p data-i18n="ft.s4.d">Lange nicht gesehen? Eine freundliche Nachricht holt den Gast zurück.</p></div></li>
+      </ol>
+    </div>
+
+    <div class="demo reveal">
+      <div class="toast" id="toast" role="status" aria-live="polite">
+        <span class="toast-icon"></span>
+        <div><b>Trattoria Luna <small data-i18n="demo.now">jetzt</small></b><p data-i18n="demo.toast">Lange nicht gesehen! Diese Woche gibt's das Dessert aufs Haus.</p></div>
+      </div>
+
+      <div class="device demo-device">
+        <div class="device-body">
+          <i class="db db-a"></i><i class="db db-v1"></i><i class="db db-v2"></i><i class="db db-p"></i>
+          <div class="device-screen pass-screen">
+            <span class="device-island"></span>
+            <div class="sb"><span>9:41</span><svg><use href="#sb-icons"/></svg></div>
+
+            <div class="pw-head"><b data-i18n="demo.mycards">Meine Karten</b><span class="pw-av">A</span></div>
+
+            <div class="pass">
+              <div class="pass-top">
+                <span class="pass-logo"></span>
+                <div class="pass-name"><b>Trattoria Luna</b><small data-i18n="demo.card">Stempelkarte</small></div>
+                <span class="pass-n" id="passN">3/8</span>
+              </div>
+              <div class="pass-grid" id="stampGrid">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </div>
+              <div class="pass-foot">
+                <span class="pass-qr"><svg viewBox="0 0 21 21"><use href="#qr"/></svg></span>
+                <div><small data-i18n="demo.reward.label">Belohnung</small><b data-i18n="demo.reward.name">Tiramisu aufs Haus</b><small data-i18n="demo.scan">Beim Bezahlen zeigen</small></div>
+              </div>
+            </div>
+
+            <p class="demo-count" id="stampCount"></p>
+            <div class="demo-reward" id="stampReward" hidden>
+              <b data-i18n="demo.reward.t">Geschafft! Tiramisu aufs Haus.</b>
+              <small data-i18n="demo.reward.d">Zeigen Sie diese Karte beim nächsten Besuch.</small>
+            </div>
+            <div class="pw-list">
+              <p class="pw-list-t" data-i18n="demo.recent">Letzte Besuche</p>
+              <p class="pw-row"><span class="pw-dot"></span><span>08.11.2026</span><b data-i18n="demo.plus">+1 Stempel</b></p>
+              <p class="pw-row"><span class="pw-dot"></span><span>24.10.2026</span><b data-i18n="demo.plus">+1 Stempel</b></p>
+            </div>
+            <button class="btn btn-primary demo-btn" id="stampBtn" type="button"></button>
+            <p class="pw-url"><svg viewBox="0 0 12 14"><rect x="1" y="6" width="10" height="7.5" rx="1.6"/><path d="M3.4 6V4.2a2.6 2.6 0 0 1 5.2 0V6" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>luna.stammplatz.de</p>
+            <span class="device-home"></span>
+          </div>
+        </div>
+      </div>
+      <p class="demo-hint" data-i18n="demo.hint">Tippen Sie auf den Button, um es auszuprobieren.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<!-- Preise ändern: einfach die Zahlen hier im HTML anpassen -->
+<section class="section" id="pakete">
+  <div class="container">
+    <div class="section-head center">
+      <p class="eyebrow reveal" data-i18n="pk.eyebrow">Preise</p>
+      <h2 class="reveal" data-i18n="pk.title">Unsere Karte. <em>Faire Preise.</em></h2>
+      <p class="section-lead reveal" data-i18n="pk.lead">Jede Leistung gibt es einzeln zum Festpreis. Im Set zahlen Sie weniger. Laufende Kosten entstehen nur, wenn Sie sie selbst wählen.</p>
+    </div>
+
+    <!-- À LA CARTE -->
+    <div class="carte reveal">
+      <div class="carte-head">
+        <p class="carte-title">À la carte</p>
+        <p class="carte-sub" data-i18n="ac.sub">Einzeln bestellbar · Einmalpreis</p>
+      </div>
+      <div class="carte-cols">
+        <div class="carte-col">
+          <p class="carte-sec" data-i18n="ac.s1">Am Tisch</p>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.1.t">Speisekarten-Design</span><i></i><b>249 €</b></p><p class="c-desc" data-i18n="ac.1.d">bis 40 Gerichte, druckfertig</p></div>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.2.t">Fotoshooting</span><i></i><b><small data-i18n="pk.from">ab</small> 120 €</b></p><p class="c-desc" data-i18n="ac.2.d">Ihre Gerichte, appetitlich in Szene gesetzt</p></div>
+        </div>
+        <div class="carte-col">
+          <p class="carte-sec" data-i18n="ac.s2">Auf dem Bildschirm</p>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.4.t">Animiertes TV-Menü</span><i></i><b>200 €</b></p><p class="c-desc" data-i18n="ac.4.d">für den Bildschirm über der Theke</p></div>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.5.t">Promo-Video (Animation)</span><i></i><b>200 €</b></p><p class="c-desc" data-i18n="ac.5.d">z. B. Rabatt-Aktion, Happy Hour</p></div>
+        </div>
+        <div class="carte-col">
+          <p class="carte-sec" data-i18n="ac.s3">Online &amp; Telefon</p>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.8.t">Restaurant-Website</span><i></i><b>500 €</b></p><p class="c-desc" data-i18n="ac.8.d">inkl. Speisekarte &amp; Anfahrt</p></div>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.9.t">Google-Business-Profil</span><i></i><b>120 €</b></p><p class="c-desc" data-i18n="ac.9.d">einrichten &amp; optimieren</p></div>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.11.t">Telefon-Assistent</span><i></i><b>350–500 €</b></p><p class="c-desc" data-i18n="ac.11.d">Einrichtung · danach 129–199 € / Monat</p></div>
+        </div>
+        <div class="carte-col">
+          <p class="carte-sec" data-i18n="ac.s4">Stammgäste &amp; Social</p>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.10.t">Digitale Stempelkarte</span><i></i><b>500 €</b></p><p class="c-desc" data-i18n="ac.10.d">inkl. „Kommen Sie wieder“-Nachrichten · auch im Abo</p></div>
+          <div class="c-item"><p class="c-line"><span data-i18n="ac.6.t">Reel / TikTok-Video</span><i></i><b>80 €</b></p><p class="c-desc" data-i18n="ac.6.d">hochkant, fertig geschnitten</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SETS -->
+    <div class="sets-head reveal">
+      <h3 data-i18n="sets.t">Im Set <em>günstiger.</em></h3>
+      <p data-i18n="sets.d">Die Sets enthalten das, was die meisten Restaurants zusammen bestellen.</p>
+    </div>
+
+    <div class="pricing">
+      <article class="plan reveal">
+        <p class="plan-course" data-i18n="pk.1.c">Vorspeise</p>
+        <h3 data-i18n="pk.1.t">Menü Basis</h3>
+        <p class="plan-for" data-i18n="pk.1.f">Ihre Karte gedruckt, als PDF &amp; per QR</p>
+        <p class="plan-time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pk.1.time">fertig in 5 Tagen</span></p>
+        <div class="plan-price">
+          <p class="plan-was" data-i18n="pk.1.was">so viel wie die Karte allein</p>
+          <p class="plan-now"><b>249 €</b></p>
+          <p class="plan-save" data-i18n="pk.1.save">PDF, QR &amp; WhatsApp gratis</p>
+        </div>
+        <ul>
+          <li data-i18n="pk.1.l1">Speisekarten-Design (bis 40 Gerichte)</li>
+          <li data-i18n="pk.1.l2">PDF-Menü für Website &amp; WhatsApp</li>
+          <li data-i18n="pk.1.l3">QR-Code-Menü für die Tische</li>
+          <li data-i18n="pk.1.l4">WhatsApp-Bestelllink</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost" data-i18n="pk.btn">Anfragen</a>
+      </article>
+
+      <article class="plan plan-hot reveal">
+        <span class="plan-stamp" data-i18n="pk.hot">Beliebt</span>
+        <p class="plan-course" data-i18n="pk.2.c">Hauptgang</p>
+        <h3 data-i18n="pk.2.t">Digital am Tisch</h3>
+        <p class="plan-for" data-i18n="pk.2.f">Karte, QR-Menü &amp; Bildschirm</p>
+        <p class="plan-time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pk.2.time">fertig in 8 Tagen</span></p>
+        <div class="plan-price">
+          <p class="plan-was"><span data-i18n="pk.single">einzeln</span> <s>769 €</s></p>
+          <p class="plan-now"><b data-from="769" data-to="449">449 €</b></p>
+          <p class="plan-save"><span data-i18n="pk.save">Sie sparen</span> 320 €</p>
+        </div>
+        <ul>
+          <li data-i18n="pk.2.l1">Alles aus „Menü Basis“</li>
+          <li data-i18n="pk.2.l2">Animiertes TV-Menü</li>
+          <li data-i18n="pk.2.l3">1 Promo-Video (z. B. Rabatt-Aktion)</li>
+          <li data-i18n="pk.2.l4">Google-Profil eingerichtet &amp; optimiert</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-primary" data-i18n="pk.btn">Anfragen</a>
+      </article>
+
+      <article class="plan reveal">
+        <p class="plan-course" data-i18n="pk.3.c">Das ganze Menü</p>
+        <h3 data-i18n="pk.3.t">Rundum</h3>
+        <p class="plan-for" data-i18n="pk.3.f">Inkl. Website &amp; Treue-System</p>
+        <p class="plan-time"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-i18n="pk.3.time">fertig in 3 Wochen</span></p>
+        <div class="plan-price">
+          <p class="plan-was"><span data-i18n="pk.single">einzeln</span> <s>1.929 €</s></p>
+          <p class="plan-now"><b data-from="1929" data-to="990">990 €</b><small data-i18n="pk.3.mo">+ 39&nbsp;€&nbsp;/&nbsp;Monat ab dem 4. Monat</small></p>
+          <p class="plan-save"><span data-i18n="pk.save">Sie sparen</span> 939 €</p>
+        </div>
+        <ul>
+          <li data-i18n="pk.3.l1">Alles aus „Digital am Tisch“</li>
+          <li data-i18n="pk.3.l2">Restaurant-Website</li>
+          <li data-i18n="pk.3.l3">Digitale Stempelkarte</li>
+          <li data-i18n="pk.3.l4">1 Reel + 1 TikTok-Video</li>
+          <li data-i18n="pk.3.l5">Betreuung 3 Monate gratis, danach 39&nbsp;€&nbsp;/&nbsp;Monat</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-ghost" data-i18n="pk.btn">Anfragen</a>
+      </article>
+    </div>
+
+    <!-- GARANTIEN -->
+    <ul class="promise reveal">
+      <li><span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="pm.1">Festpreis ohne versteckte Kosten</span></li>
+      <li><span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="pm.2">Einrichtung &amp; Einweisung inklusive</span></li>
+      <li><span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="pm.3">Kostenloses Erstgespräch</span></li>
+      <li><span class="cmp-ic"><svg class="draw" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><span data-i18n="pm.4">Laufende Kosten nur auf Wunsch</span></li>
+    </ul>
+
+    <!-- NICHT ENTHALTEN -->
+    <div class="not-incl reveal">
+      <p class="ni-t"><b data-i18n="ni.t">Nicht in den Sets enthalten.</b><span data-i18n="ni.d">Einzeln buchbar.</span></p>
+      <ul>
+        <li><b data-i18n="ni.1.t">Fotoshooting</b><span data-i18n="ni.1.d">ab 120 €</span></li>
+        <li><b data-i18n="ni.2.t">Druck der Karten</b><span data-i18n="ni.2.d">Sie bekommen die druckfertige Datei</span></li>
+        <li><b data-i18n="ni.3.t">Social-Media-Betreuung</b><span data-i18n="ni.3.d">400 € / Monat</span></li>
+        <li><b data-i18n="ni.4.t">Telefon-Assistent</b><span data-i18n="ni.4.d">Einrichtung 350–500 €</span></li>
+      </ul>
+    </div>
+
+    <!-- MONATLICH -->
+    <div class="social-abo reveal">
+      <div class="sa-copy">
+        <p class="eyebrow" data-i18n="sa.eyebrow">Monatlich, nur auf Wunsch</p>
+        <h3 data-i18n="sa.t">Betreuung <em>nach dem Start.</em></h3>
+        <p data-i18n="sa.d">Wenn wir uns auch nach dem Start um alles kümmern sollen, buchen Sie eine Betreuung dazu. Die Mindestlaufzeit steht jeweils dabei.</p>
+      </div>
+      <div class="sa-plans">
+        <div class="sa-plan sa-plus">
+          <p class="sa-name" data-i18n="sa.1.t">Social Media</p>
+          <p class="sa-price"><b>400 €</b> <span data-i18n="ac.mo">/ Monat</span></p>
+          <p class="sa-desc" data-i18n="sa.1.d">Instagram &amp; TikTok: Wir planen, filmen, schneiden und posten. Sie geben nur noch Ihr Okay.</p>
+        </div>
+        <div class="sa-plan">
+          <p class="sa-name" data-i18n="sa.2.t">Website-Betreuung</p>
+          <p class="sa-price"><b>29 €</b> <span data-i18n="ac.mo">/ Monat</span></p>
+          <p class="sa-desc" data-i18n="sa.2.d">Wir halten Ihre Website aktuell: neue Preise, Öffnungszeiten, Aktionen.</p>
+          <p class="sa-term" data-i18n="sa.2.m">Mindestlaufzeit 3 Monate</p>
+        </div>
+        <div class="sa-plan">
+          <p class="sa-name" data-i18n="sa.3.t">Stempelkarte im Abo</p>
+          <p class="sa-price"><b>49 €</b> <span data-i18n="ac.mo">/ Monat</span></p>
+          <p class="sa-desc" data-i18n="sa.3.d">Statt 500 € auf einmal, ohne Einrichtungspauschale.</p>
+          <p class="sa-term" data-i18n="sa.3.m">Mindestlaufzeit 6 Monate</p>
+        </div>
+        <div class="sa-plan">
+          <p class="sa-name" data-i18n="sa.4.t">Änderungen &amp; Wartung</p>
+          <p class="sa-price"><b>25 €</b> <span data-i18n="ac.hr">/ Stunde</span></p>
+          <p class="sa-desc" data-i18n="sa.4.d">Neues Gericht, neuer Preis oder neue Aktion. Wir ändern es und rechnen nach Stunden ab.</p>
+        </div>
+        <a href="#kontakt" class="btn btn-light sa-btn" data-i18n="sa.btn">Betreuung anfragen</a>
+      </div>
+    </div>
+
+    <p class="pricing-note reveal" data-i18n="pk.note">Die Festpreise gelten für den beschriebenen Umfang. Größere Wünsche besprechen wir vorher im kostenlosen Erstgespräch.</p>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section section-paper2" id="ablauf">
+  <div class="container">
+    <div class="section-head">
+      <p class="eyebrow reveal" data-i18n="pr.eyebrow">Ablauf</p>
+      <h2 class="reveal" data-i18n="pr.title">In vier <em>Schritten.</em></h2>
+    </div>
+    <ol class="process">
+      <li class="reveal"><span class="pr-num">01</span><h3 data-i18n="pr.1.t">Kennenlernen</h3><p data-i18n="pr.1.d">Wir kommen vorbei oder sprechen per Video-Call. Kostenlos und unverbindlich.</p></li>
+      <li class="reveal"><span class="pr-num">02</span><h3 data-i18n="pr.2.t">Erster Entwurf</h3><p data-i18n="pr.2.d">Nach wenigen Tagen sehen Sie den ersten Entwurf.</p></li>
+      <li class="reveal"><span class="pr-num">03</span><h3 data-i18n="pr.3.t">Feinschliff</h3><p data-i18n="pr.3.d">Sie sagen, was Ihnen gefällt und was nicht. Wir ändern es, bis alles stimmt.</p></li>
+      <li class="reveal"><span class="pr-num">04</span><h3 data-i18n="pr.4.t">Live &amp; betreut</h3><p data-i18n="pr.4.d">Wir bringen alles an den Start und bleiben Ihr Ansprechpartner.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ ABOUT + FAQ ============ -->
+<section class="section" id="faq">
+  <div class="container about-grid">
+    <div class="about">
+      <p class="eyebrow reveal" data-i18n="ab.eyebrow">Über uns</p>
+      <h2 class="reveal" data-i18n="ab.title">Wir sind <em>zu zweit.</em></h2>
+      <p class="reveal" data-i18n="ab.p1">Wir sind zwei Gründer und haben schon über 50 Restaurants betreut. Wir arbeiten für kleine Restaurants, Cafés und Imbisse, die gut aussehen wollen, ohne Agenturpreise zu zahlen.</p>
+      <p class="reveal" data-i18n="ab.p2">Sie sprechen immer direkt mit den Leuten, die Ihr Projekt umsetzen.</p>
+    </div>
+
+    <div class="faq">
+      <details class="reveal">
+        <summary data-i18n="faq.1.q">Muss ich mich mit Technik auskennen?</summary>
+        <p data-i18n="faq.1.a">Nein. Wir richten alles ein und erklären es Ihnen. Für Änderungen reicht eine kurze E-Mail.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.2.q">Wie schnell geht das?</summary>
+        <p data-i18n="faq.2.a">„Menü Basis“ (Karte, PDF &amp; QR-Menü) ist in 5 Tagen fertig, „Digital am Tisch“ in 8 Tagen, das Rundum-Paket mit Website in etwa 3 Wochen.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.7.q">Kann ich auch nur eine einzelne Leistung buchen?</summary>
+        <p data-i18n="faq.7.a">Ja. Jede Leistung gibt es einzeln. Ein Set lohnt sich, wenn Sie mehrere Dinge brauchen.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.8.q">Gibt es laufende Kosten?</summary>
+        <p data-i18n="faq.8.a">Nur, wenn Sie es möchten. Einzelleistungen und die Sets „Menü Basis“ und „Digital am Tisch“ zahlen Sie einmal. Eine Betreuung für Website, Stempelkarte oder Social Media können Sie jederzeit dazubuchen.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.6.q">Übernehmen Sie auch unser Instagram &amp; TikTok?</summary>
+        <p data-i18n="faq.6.a">Ja. Wir machen einzelne Videos oder übernehmen die komplette Betreuung im Monatsabo: planen, filmen, schneiden und posten. Alles passt im Design zu Ihrer Karte und Ihrem TV-Menü.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.3.q">Kann ich Preise und Gerichte später ändern?</summary>
+        <p data-i18n="faq.3.a">Ja. Schicken Sie uns die Änderung, wir passen QR-Menü und TV-Menü an.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.4.q">Brauchen meine Gäste eine App für die Stempelkarte?</summary>
+        <p data-i18n="faq.4.a">Nein. Die Stempelkarte läuft im Browser des Handys. Der Gast scannt einmal den QR-Code, mehr braucht es nicht.</p>
+      </details>
+      <details class="reveal">
+        <summary data-i18n="faq.5.q">Arbeiten Sie nur vor Ort?</summary>
+        <p data-i18n="faq.5.a">In unserer Region kommen wir gern persönlich vorbei. Alle anderen betreuen wir genauso gut per E-Mail oder Video-Call.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section section-dark" id="kontakt">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <p class="eyebrow reveal" data-i18n="ct.eyebrow">Kontakt</p>
+      <h2 class="reveal" data-i18n="ct.title">Lassen Sie uns über Ihr Restaurant <em>reden.</em></h2>
+      <p class="section-lead reveal" data-i18n="ct.lead">Schreiben Sie uns kurz, was Sie brauchen. Wir antworten innerhalb von 24 Stunden.</p>
+      <!-- TODO: echte Gmail-Adresse eintragen (auch in js/main.js → CONTACT_EMAIL) -->
+      <ul class="contact-direct reveal">
+        <li><span data-i18n="ct.mail">E-Mail</span><a href="mailto:stammplatz.agency@gmail.com" class="contact-mail">stammplatz.agency@gmail.com</a></li>
+        <li><span data-i18n="ct.time">Antwortzeit</span><strong data-i18n="ct.timev">innerhalb von 24 Stunden</strong></li>
+      </ul>
+      <p class="contact-note reveal" data-i18n="ct.note">Lieber persönlich? Wir kommen auch vorbei oder machen einen Video-Call.</p>
+    </div>
+
+    <form class="form reveal" id="contactForm" novalidate>
+      <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="field-row">
+        <label class="field"><span data-i18n="f.rest">Ihr Restaurant</span><input name="restaurant" required maxlength="120" autocomplete="organization"></label>
+        <label class="field"><span data-i18n="f.contact">Ihre E-Mail</span><input name="contact" type="email" required maxlength="254" autocomplete="email"></label>
+      </div>
+      <fieldset class="chips">
+        <legend data-i18n="f.interest">Was brauchen Sie?</legend>
+        <label><input type="checkbox" name="interest" value="Speisekarte"><span data-i18n="f.i1">Speisekarte</span></label>
+        <label><input type="checkbox" name="interest" value="QR-Menü"><span data-i18n="f.i2">QR-Menü</span></label>
+        <label><input type="checkbox" name="interest" value="TV-Menü"><span data-i18n="f.i3">TV-Menü</span></label>
+        <label><input type="checkbox" name="interest" value="Promo-Video"><span data-i18n="f.i7">Promo-Video</span></label>
+        <label><input type="checkbox" name="interest" value="Instagram & TikTok"><span>Instagram &amp; TikTok</span></label>
+        <label><input type="checkbox" name="interest" value="Website"><span>Website</span></label>
+        <label><input type="checkbox" name="interest" value="Stempelkarte"><span data-i18n="f.i5">Stempelkarte</span></label>
+        <label><input type="checkbox" name="interest" value="Telefon-Assistent"><span data-i18n="f.i9">Telefon-Assistent</span></label>
+        <label><input type="checkbox" name="interest" value="Set / Paket"><span data-i18n="f.i8">Ein Set</span></label>
+        <label><input type="checkbox" name="interest" value="Sonstiges"><span data-i18n="f.i6">Sonstiges</span></label>
+      </fieldset>
+      <label class="field"><span data-i18n="f.msg">Nachricht (optional)</span><textarea name="message" rows="4" maxlength="3000" data-i18n-attr="placeholder:f.msg.ph" placeholder="z. B. Wir sind ein Café mit 30 Plätzen und brauchen eine neue Karte …"></textarea></label>
+      <button class="btn btn-primary btn-block" type="submit" data-i18n="f.send">Anfrage senden</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<!-- Fester Button unten – nur auf dem Handy -->
+<a href="#kontakt" class="btn btn-primary sticky-cta" id="stickyCta" data-i18n="sticky.cta" inert>Kostenloses Erstgespräch</a>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer-word">Stammplatz</p>
+    <div class="footer-bottom">
+      <p data-i18n="foot.tag">Digitales für Restaurants, Cafés und Imbisse.</p>
+      <p>© <span id="year">2026</span> Stammplatz</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox für Speisekarten-Seiten -->
+<dialog class="lightbox" id="lightbox" aria-label="Speisekarte">
+  <button type="button" class="lb-close" data-lb="close" aria-label="Schließen">×</button>
+  <button type="button" class="lb-nav lb-prev" data-lb="prev" aria-label="Zurück">‹</button>
+  <img id="lbImg" alt="">
+  <button type="button" class="lb-nav lb-next" data-lb="next" aria-label="Weiter">›</button>
+  <p class="lb-count" id="lbCount"></p>
+</dialog>
+
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
