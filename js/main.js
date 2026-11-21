@@ -45,9 +45,9 @@ function applyLang(next) {
   $$(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   updateBurgerLabel();
   renderStamps();
-  store.set("lang", lang);
 }
-$$(".lang button").forEach(b => b.addEventListener("click", () => applyLang(b.dataset.lang)));
+// Sprache nur merken, wenn der Besucher selbst umschaltet (siehe Datenschutz, Punkt 7)
+$(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); store.set("lang", lang); }));
 
 /* ---------- Header & mobiles Menü ---------- */
 const header = $("#header");
@@ -314,7 +314,7 @@ form.addEventListener("submit", e => {
   let ok = true;
   required.forEach(([k, input]) => {
     const val = String(d.get(k) || "").trim();
-    const bad = !val || (k === "contact" && !/^[^s@]+@[^s@]+.[^s@]+$/.test(val));
+    const bad = !val || (k === "contact" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val));
     input.closest(".field").classList.toggle("invalid", bad);
     if (bad) ok = false;
   });
