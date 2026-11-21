@@ -47,7 +47,7 @@ function applyLang(next) {
   renderStamps();
 }
 // Sprache nur merken, wenn der Besucher selbst umschaltet (siehe Datenschutz, Punkt 7)
-$(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); store.set("lang", lang); }));
+$$(".lang button").forEach(b => b.addEventListener("click", () => { applyLang(b.dataset.lang); store.set("lang", lang); }));
 
 /* ---------- Header & mobiles Menü ---------- */
 const header = $("#header");
