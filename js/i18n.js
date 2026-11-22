@@ -256,7 +256,9 @@ window.I18N_EN = {
   "sets.t": "Cheaper <em>as a set.</em>",
   "sets.d": "The sets contain what most clients order together.",
 
-  "sa.eyebrow": "Monthly, only if you want",
+  "mt.carte": "See all single prices",
+  "mt.abo": "See monthly care plans",
+  "sa.eyebrow":"Monthly, only if you want",
   "sa.t": "Care <em>after launch.</em>",
   "sa.d": "If you want us to keep looking after things after launch, add a care plan. The minimum term is listed with each one.",
   "sa.btn": "Enquire about a care plan",

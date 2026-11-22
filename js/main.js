@@ -372,6 +372,15 @@ form.addEventListener("input", e => {
   if (f) f.classList.remove("invalid");
 });
 
+/* ---------- Handy: Einzelpreise / Betreuung aufklappen ---------- */
+$$("[data-mtoggle]").forEach(btn => btn.addEventListener("click", () => {
+  const box = document.getElementById(btn.dataset.mtoggle);
+  if (!box) return;
+  const open = box.classList.toggle("m-open");
+  box.classList.add("in");
+  btn.setAttribute("aria-expanded", String(open));
+}));
+
 /* ---------- Footer-Jahr & Start ---------- */
 $("#year").textContent = new Date().getFullYear();
 applyLang(lang);
