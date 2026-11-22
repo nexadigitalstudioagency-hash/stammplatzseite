@@ -18,7 +18,7 @@
   <!-- Schriften liegen auf der eigenen Seite (schneller, keine Verbindung zu Google) -->
   <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/instrument-sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css?v=20261121">
+  <link rel="stylesheet" href="css/style.css?v=20261122">
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body id="top">
@@ -718,7 +718,8 @@
     </div>
 
     <!-- À LA CARTE -->
-    <div class="carte reveal">
+    <button type="button" class="m-toggle m-toggle-carte" data-mtoggle="carte" aria-expanded="false" aria-controls="carte" data-i18n="mt.carte">Alle Einzelpreise ansehen</button>
+    <div class="carte reveal" id="carte">
       <div class="carte-head">
         <p class="carte-title">À la carte</p>
         <p class="carte-sub" data-i18n="ac.sub">Einzeln bestellbar · Einmalpreis</p>
@@ -835,7 +836,8 @@
     </div>
 
     <!-- MONATLICH -->
-    <div class="social-abo reveal">
+    <button type="button" class="m-toggle m-toggle-abo" data-mtoggle="abo" aria-expanded="false" aria-controls="abo" data-i18n="mt.abo">Monatliche Betreuung ansehen</button>
+    <div class="social-abo reveal" id="abo">
       <div class="sa-copy">
         <p class="eyebrow" data-i18n="sa.eyebrow">Monatlich, nur auf Wunsch</p>
         <h3 data-i18n="sa.t">Betreuung <em>nach dem Start.</em></h3>
@@ -1011,7 +1013,7 @@
   <p class="lb-count" id="lbCount"></p>
 </dialog>
 
-<script src="js/i18n.js?v=20261121"></script>
-<script src="js/main.js?v=20261121"></script>
+<script src="js/i18n.js?v=20261122"></script>
+<script src="js/main.js?v=20261122"></script>
 </body>
 </html>
