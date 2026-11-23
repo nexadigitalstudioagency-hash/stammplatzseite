@@ -1092,10 +1092,11 @@ h2 { font-size: clamp(2.3rem, 5.4vw, 4.3rem); margin-bottom: 22px; }
   .compare { grid-template-columns: 1fr; max-width: 560px; }
   .not-incl { grid-template-columns: 1fr; }
   .sticky-cta {
-    display: flex; position: fixed; z-index: 40; left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom));
-    box-shadow: 0 14px 30px -10px rgba(33,27,22,.55);
+    display: flex; gap: 10px; position: fixed; z-index: 40; left: 16px; right: 16px; bottom: calc(14px + env(safe-area-inset-bottom));
     transform: translateY(160%); transition: transform .35s var(--ease);
   }
+  .sticky-cta .btn { box-shadow: 0 14px 30px -10px rgba(33,27,22,.55); }
+  .sticky-cta .btn-primary { flex: 1; }
   .sticky-cta:hover { transform: translateY(160%); }
   .sticky-cta.show, .sticky-cta.show:hover { transform: none; }
   .nav-open .sticky-cta { display: none; }
@@ -1253,4 +1254,71 @@ h2 { font-size: clamp(2.3rem, 5.4vw, 4.3rem); margin-bottom: 22px; }
 
 @media (min-width: 601px) and (max-width: 760px) {
   #pakete .carte-cols { grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   PREISE v3 (Nov 2026): alle Preise als Karten, immer sichtbar
+   ========================================================= */
+.px-legend { display: flex; justify-content: center; align-items: center; gap: 8px; margin: -10px 0 26px; font-size: 14px; color: var(--ink-soft); }
+.px-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--ink); }
+.px-dot-mo { background: var(--sage); margin-left: 14px; }
+.px-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }
+.px-card { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 26px 18px; box-shadow: 0 1px 0 rgba(33,27,22,.03); }
+.px-head { display: flex; gap: 14px; align-items: flex-start; }
+.px-head .icon { flex: none; width: 46px; height: 46px; }
+.px-head .icon svg { width: 22px; height: 22px; }
+.px-head h3 { font-size: 1.45rem; line-height: 1.15; }
+.px-head p { font-size: 14.5px; line-height: 1.45; color: var(--ink-soft); margin-top: 5px; }
+.px-list { list-style: none; padding: 10px 0 0; margin: 18px 0 0; border-top: 1px dashed var(--line); }
+.px-list li { display: flex; align-items: baseline; gap: 8px; padding: 9px 0; font-size: 15.5px; line-height: 1.35; }
+.px-list span { flex: 0 1 auto; }
+.px-list i { flex: 1 1 14px; min-width: 14px; border-bottom: 1.5px dotted rgba(33,27,22,.3); transform: translateY(-4px); }
+.px-list b { flex: none; white-space: nowrap; font: 500 1.2rem/1 var(--serif); color: var(--ink); }
+.px-list b small { font: 400 12.5px var(--sans); color: var(--ink-soft); }
+.px-mo b, .px-mo b small { color: var(--sage); }
+.px-feat { background: var(--terra); border-color: transparent; color: #fff; }
+.px-feat .px-head p { color: rgba(255,255,255,.85); }
+.px-feat .icon { background: rgba(255,255,255,.16); color: #fff; }
+.px-feat .px-list { border-color: rgba(255,255,255,.3); }
+.px-feat .px-list i { border-color: rgba(255,255,255,.45); }
+.px-feat .px-list b, .px-feat .px-list b small { color: #fff; }
+.px-feat .px-mo b, .px-feat .px-mo b small { color: #FFE2A6; }
+.px-ribbon { position: absolute; top: -11px; right: 22px; font: 600 11px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; background: var(--mustard); color: var(--ink); padding: 7px 11px; border-radius: 99px; rotate: 3deg; }
+.px-cta { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; gap: 20px 32px; flex-wrap: wrap; padding: 22px 28px; border-radius: var(--radius); background: var(--ink); color: var(--on-dark); }
+.px-cta p { color: var(--on-dark-soft); font-size: 15.5px; max-width: 640px; }
+.px-cta b { color: var(--on-dark); font: 500 1.3rem/1.3 var(--serif); margin-right: 6px; }
+#pakete .promise { margin-top: 18px; }
+
+@media (max-width: 1080px) { .px-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) {
+  .px-grid { grid-template-columns: 1fr; gap: 12px; }
+  .px-card { padding: 20px 18px 12px; border-radius: var(--radius-sm); }
+  .px-head .icon { width: 40px; height: 40px; }
+  .px-head h3 { font-size: 1.25rem; }
+  .px-head p { font-size: 13.5px; }
+  .px-list { margin-top: 14px; padding-top: 6px; }
+  .px-list li { padding: 7px 0; font-size: 15px; }
+  .px-list b { font-size: 1.1rem; }
+  .px-legend { margin: -6px 0 18px; }
+  .px-cta { padding: 20px 18px; border-radius: var(--radius-sm); }
+  .px-cta .btn { width: 100%; justify-content: center; }
+}
+
+/* WhatsApp-Kontakt (Hero + fester Button auf dem Handy) */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.wa-ic { width: 22px; height: 22px; flex: none; }
+.wa-ic path { fill: #1E9E57; }
+.wa-ic .wa-phone { fill: #fff; }
+.btn-wa:hover .wa-ic path:not(.wa-phone) { fill: #2BC46D; }
+.btn-wa:hover .wa-ic .wa-phone { fill: var(--ink); }
+.sticky-wa { --bg: #1E9E57; --fg: #fff; width: 52px; padding: 0; flex: none; }
+.sticky-wa .wa-ic { width: 26px; height: 26px; }
+.sticky-wa .wa-ic path { fill: #fff; }
+.sticky-wa .wa-ic .wa-phone { fill: #1E9E57; }
+
+/* Kürzerer Einleitungstext auf dem Handy */
+.lead-short { display: none; }
+@media (max-width: 600px) {
+  .hero .lead:not(.lead-short) { display: none; }
+  .hero .lead-short { display: block; }
 }
